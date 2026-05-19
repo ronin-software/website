@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/dans",
+      "destination": "https://calendar.app.google/qgeuEgLsCBFSgqoD9",
+      "permanent": false
+    }
+  ]
 }

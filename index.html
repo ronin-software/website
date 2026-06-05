@@ -27,10 +27,25 @@
     <ul>
       <li><a href="https://nativewind.dev">Nativewind</a></li>
       <li><a href="https://nativewindui.com">NativewindUI</a></li>
+      <li><a href="https://rn.new">rn.new</a></li>
       <li><a href="https://githubdownfall.com/">Github Downfall</a></li>
     </ul>
-    <p>If you'd like to explore working together, <a href="/dans?utm_source=website&amp;utm_medium=homepage_cta">book a call</a> or email <a href="mailto:hello@ronindevs.com">hello@ronindevs.com</a>.</p>
+    <p>If you use one of these, the same team can help build, fix, or ship your app. <a href="/dans?utm_source=website&amp;utm_medium=homepage_cta">Book a call</a> or email <a href="mailto:hello@ronindevs.com">hello@ronindevs.com</a>.</p>
     <p>&copy; Ronin Software LLC</p>
+    <script>
+      // Carry an incoming channel's UTM params (e.g. from rn.new) through to the /dans booking link.
+      (function () {
+        var p = new URLSearchParams(location.search);
+        if (!p.get('utm_source')) return;
+        document.querySelectorAll('a[href^="/dans"]').forEach(function (a) {
+          var u = new URL(a.getAttribute('href'), location.origin);
+          ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+            if (p.get(k)) u.searchParams.set(k, p.get(k));
+          });
+          a.setAttribute('href', u.pathname + u.search);
+        });
+      })();
+    </script>
     
   </body>
 </html>
